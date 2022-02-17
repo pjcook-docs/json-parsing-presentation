@@ -1,0 +1,38 @@
+[
+   {
+      "contentType": "carousel",
+      "cards": [
+         {
+            "title": "Awesome title",
+            "body": "Some interesting tagline",
+            "image": "https://google.com/images?src=peanuts.jpg"
+         },
+         {
+            "title": "Awesome title2",
+            "body": "Some interesting tagline",
+            "image": "https://google.com/images?src=peanuts.jpg"
+         },
+         {
+            "title": "Awesome title3",
+            "body": "Some interesting tagline",
+            "image": "https://google.com/images?src=peanuts.jpg"
+         }
+      ]
+   },
+   {
+      "contentType": "simpleBanner",
+      "title": "Awesome title",
+      "body": "Some interesting tagline"
+   },
+   {
+      "contentType": "recentlyViewed",
+      "title": "Awesome title",
+      "products": [
+         {
+            "id": "9823475",
+            "title": "76432: Lego Ultimate Batmobile",
+            "price": "£199.00"
+         }
+      ]
+   }
+]

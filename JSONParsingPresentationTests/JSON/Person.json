@@ -1,0 +1,13 @@
+{
+   "name": "Tim Apple",
+   "address": {
+      "address1": "1 Infinity Loop",
+      "address2": "San Francisco",
+      "address3": "California",
+      "zip": 12345
+   },
+   "personalDetails": {
+      "favourite_color": "White",
+      "favourite_fruit": "Apple"
+   }
+}
