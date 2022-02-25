@@ -46,6 +46,6 @@ extension Dictionary where Key == String, Value == Any {
 
 extension Dictionary where Key == String, Value == Any {
     func toJsonData() throws -> Data {
-        try JSONSerialization.data(withJSONObject: self, options: .fragmentsAllowed)
+        try JSONSerialization.data(withJSONObject: self, options: .sortedKeys)
     }
 }

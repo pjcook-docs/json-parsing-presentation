@@ -184,7 +184,23 @@ public struct DetailedInfo: Codable, Equatable {
 }
 ```
 
-You cannot guarantee the data structure produced when encoding JSON. This can make unit testing challenging, you can't just cast your encoded JSON to a String and compare it against an expected example.
+~~You cannot guarantee the data structure produced when encoding JSON. This can make unit testing challenging, you can't just cast your encoded JSON to a String and compare it against an expected example.~~
+
+If instead of:
+
+```swift
+let data = try JSONEncoder().encode(objectToEncode)
+```
+
+you do
+
+```swift
+let encoder = JSONEncoder()
+encoder.outputFormatting = .sortedKeys
+let data = try encoder.encode(objectToEncode)
+```
+
+Then the format and structure of the data should output in a consistent reproducable way.
 
 ```swift
 class DetailedCodableTests: XCTestCase {

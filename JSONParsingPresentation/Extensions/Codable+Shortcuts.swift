@@ -8,6 +8,8 @@ extension Decodable {
 
 extension Encodable {
     func encode() throws -> Data {
-        try JSONEncoder().encode(self)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .sortedKeys
+        return try encoder.encode(self)
     }
 }

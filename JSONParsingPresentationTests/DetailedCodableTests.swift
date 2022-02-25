@@ -3,7 +3,7 @@ import XCTest
 
 class DetailedCodableTests: XCTestCase {
     let simpleJson = "{\"name\":\"Roger\",\"age\":35}"
-    let detailedJson = "{\"name\":\"Roger\",\"age\":35,\"favourite_pet\":\"Garfield\",\"favourite_color\":\"Red\"}"
+    let detailedJson = "{\"age\":35,\"favourite_color\":\"Red\",\"favourite_pet\":\"Garfield\",\"name\":\"Roger\"}"
     
     func testJSON_toObject() throws {
         let jsonData = try simpleJson.toJsonData()
@@ -26,29 +26,15 @@ class DetailedCodableTests: XCTestCase {
     func testObject_toJSON() throws {
         let info = DetailedInfo(name: "Roger", age: 35, pet: nil, color: nil)
         let jsonData = try info.encode()
-
-        /* This won't work because the order of the fields that get output is not guaranteed */
-        // let output = String(data: jsonData, encoding: .utf8)
-        // XCTAssertEqual(expected, output)
-        
-        let expectedJSONData = try simpleJson.toJsonData()
-        let info1 = try DetailedInfo.decode(jsonData)
-        let info2 = try DetailedInfo.decode(expectedJSONData)
-        XCTAssertEqual(info1.name, info2.name)
-        XCTAssertEqual(info1.age, info2.age)
-        XCTAssertEqual(info1.pet, info2.pet)
-        XCTAssertEqual(info1.color, info2.color)
+        let output = String(data: jsonData, encoding: .utf8)
+        let expected = "{\"age\":35,\"name\":\"Roger\"}"
+        XCTAssertEqual(expected, output)
     }
     
     func testObject_toFullJSON() throws {
         let info = DetailedInfo(name: "Roger", age: 35, pet: "Garfield", color: "Red")
         let jsonData = try info.encode()
-        let expectedJSONData = try detailedJson.toJsonData()
-        let info1 = try DetailedInfo.decode(jsonData)
-        let info2 = try DetailedInfo.decode(expectedJSONData)
-        XCTAssertEqual(info1.name, info2.name)
-        XCTAssertEqual(info1.age, info2.age)
-        XCTAssertEqual(info1.pet, info2.pet)
-        XCTAssertEqual(info1.color, info2.color)
+        let output = String(data: jsonData, encoding: .utf8)
+        XCTAssertEqual(detailedJson, output)
     }
 }
